@@ -1,0 +1,23 @@
+<div class="user-action-form" [formGroup]="userActionForm" *ngIf="isShowed">
+    <div class="user-action-form-content">
+        <div class="user-action-form-close" (click)="close()">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#BEBEBE" stroke-linecap="round" />
+                <line x1="13.9236" y1="2.62971" x2="1.90277" y2="14.6505" stroke="#BEBEBE" stroke-linecap="round" />
+            </svg>
+
+        </div>
+        <div class="user-action-form-title window-title">
+            Закажите бесплатную консультацию!
+        </div>
+        <input type="text" class="input" 
+        [ngStyle]="{'border-color': userActionForm.get('name')?.invalid 
+                        && (userActionForm.get('name')?.dirty || userActionForm.get('name')?.touched) ? 'red' : ''}"
+        placeholder="Ваше имя" formControlName="name">
+        <input type="text" class="input" 
+        [ngStyle]="{'border-color': userActionForm.get('phone')?.invalid 
+                        && (userActionForm.get('phone')?.dirty || userActionForm.get('phone')?.touched) ? 'red' : ''}"
+        placeholder="Ваш номер телефона" formControlName="phone">
+        <button class="button" [disabled]="userActionForm.invalid" (click)="getConsultation()">Заказать консультацию</button>
+    </div>
+</div>

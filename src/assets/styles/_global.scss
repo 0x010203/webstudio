@@ -1,0 +1,73 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: $container-width;
+    margin: 0 auto;
+
+    .main-menu {
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+
+            li {
+                list-style: none;
+
+                a {
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: $text-color;
+
+                    &:active {
+                        color: $title-text-color;
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+.button {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 0;
+    background: #709FDC;
+    color: $fill-btn-text-color;
+}
+
+.window-title {
+    font-family: 'Lora', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 130%;
+    text-align: center;
+    color: $title-text-color;
+}
+
+.input{
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid $dark-element-color;
+    padding: 17px 20px;
+    color: $placeholder-text-color;
+    &:focus{
+        color: $text-color;
+        outline: none;
+        border: 2px solid $dark-element-color;
+    }
+}

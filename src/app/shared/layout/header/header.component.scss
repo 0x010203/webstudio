@@ -1,0 +1,57 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+
+.header {
+    padding: 40px 0;
+
+    .container {
+        @include flex-aicenter-jcsbetween;
+
+        .logo {
+            width: 85px;
+            height: 47px;
+            margin-right: 100px;
+        }
+
+        .header-content {
+            @include flex-aicenter-jcsbetween;
+            font-weight: 500;
+            font-size: 16px;
+            color: $text-color;
+            width: 100%;
+
+            .header-menu {
+                margin-right: 257px;
+
+                nav ul {
+                    li {
+                        margin-right: 30px;
+                        &:last-child{
+                        margin-right: 0;
+                        }
+                    }
+                }
+            }
+
+
+            .header-phone {
+
+                a {
+                    text-decoration: none;
+                    color: $title-text-color;
+                }
+
+            }
+
+            .header-account {
+                @include flex-aicenter-jcsbetween;
+
+                .header-account-login {
+                    margin-right: 7px;
+                }
+            }
+
+        }
+    }
+}
