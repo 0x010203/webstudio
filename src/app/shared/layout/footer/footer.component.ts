@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UserActionFormComponent } from '../../components/user-action-form/user-action-form.component';
+import { UserActionType } from '../../../../assets/types/user-active-type.type';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +11,11 @@ export class FooterComponent implements OnInit {
 
   showUserActionForm: boolean = false;
 
+  @ViewChild(UserActionFormComponent)
+  private userActionFormComponent!: UserActionFormComponent;
+
+  UserActionType = UserActionType;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -16,6 +23,7 @@ export class FooterComponent implements OnInit {
 
   callMe(){
     this.showUserActionForm = true;
+    this.userActionFormComponent.isShowed = true;
   } 
 
   

@@ -8,8 +8,13 @@
 
         </div>
         <div class="user-action-form-title window-title">
-            Закажите бесплатную консультацию!
+            <span *ngIf="userActionType===UserActionType.consultation">Закажите бесплатную консультацию!</span>
+            <span *ngIf="userActionType===UserActionType.request">Заявка на услугу</span>
         </div>
+        <input type="text" class="input" *ngIf="userActionType===UserActionType.request"
+        [ngStyle]="{'border-color': userActionForm.get('serviceRequest')?.invalid 
+                        && (userActionForm.get('serviceRequest')?.dirty || userActionForm.get('serviceRequest')?.touched) ? 'red' : ''}"
+        placeholder="Копирайтинг" formControlName="serviceRequest">
         <input type="text" class="input" 
         [ngStyle]="{'border-color': userActionForm.get('name')?.invalid 
                         && (userActionForm.get('name')?.dirty || userActionForm.get('name')?.touched) ? 'red' : ''}"
@@ -18,6 +23,10 @@
         [ngStyle]="{'border-color': userActionForm.get('phone')?.invalid 
                         && (userActionForm.get('phone')?.dirty || userActionForm.get('phone')?.touched) ? 'red' : ''}"
         placeholder="Ваш номер телефона" formControlName="phone">
-        <button class="button" [disabled]="userActionForm.invalid" (click)="getConsultation()">Заказать консультацию</button>
+        <button class="button" [disabled]="userActionForm.invalid" (click)="getConsultation()"
+        *ngIf="userActionType===UserActionType.consultation">Заказать консультацию</button>
+        <button class="button" [disabled]="userActionForm.invalid" (click)="sendServiceRequest()"
+        *ngIf="userActionType===UserActionType.request">Оставить заявку</button>
     </div>
+
 </div>
