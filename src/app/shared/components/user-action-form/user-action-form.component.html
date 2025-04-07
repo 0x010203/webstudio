@@ -1,4 +1,4 @@
-<div class="user-action-form" [formGroup]="userActionForm" *ngIf="isShowed">
+<div class="user-action-form" [formGroup]="userActionForm" *ngIf="isShowedService">
     <div class="user-action-form-content">
         <div class="user-action-form-close" (click)="close()">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,23 +10,35 @@
         <div class="user-action-form-title window-title">
             <span *ngIf="userActionType===UserActionType.consultation">Закажите бесплатную консультацию!</span>
             <span *ngIf="userActionType===UserActionType.request">Заявка на услугу</span>
+            <span *ngIf="userActionType===UserActionType.message">Спасибо за вашу заявку!</span>
         </div>
         <input type="text" class="input" *ngIf="userActionType===UserActionType.request"
         [ngStyle]="{'border-color': userActionForm.get('serviceRequest')?.invalid 
                         && (userActionForm.get('serviceRequest')?.dirty || userActionForm.get('serviceRequest')?.touched) ? 'red' : ''}"
         placeholder="Копирайтинг" formControlName="serviceRequest">
-        <input type="text" class="input" 
+        <label *ngIf="userActionType===UserActionType.request && userActionForm.get('serviceRequest')?.invalid 
+                        && (userActionForm.get('serviceRequest')?.dirty || userActionForm.get('serviceRequest')?.touched)"
+        >Введите услугу</label>
+        <input type="text" class="input" *ngIf="userActionType!==UserActionType.message"
         [ngStyle]="{'border-color': userActionForm.get('name')?.invalid 
                         && (userActionForm.get('name')?.dirty || userActionForm.get('name')?.touched) ? 'red' : ''}"
         placeholder="Ваше имя" formControlName="name">
-        <input type="text" class="input" 
+        <label *ngIf="userActionForm.get('name')?.invalid 
+                        && (userActionForm.get('name')?.dirty || userActionForm.get('name')?.touched)">Введите имя</label>
+        <input type="text" class="input" *ngIf="userActionType!==UserActionType.message"
         [ngStyle]="{'border-color': userActionForm.get('phone')?.invalid 
                         && (userActionForm.get('phone')?.dirty || userActionForm.get('phone')?.touched) ? 'red' : ''}"
         placeholder="Ваш номер телефона" formControlName="phone">
+        <label *ngIf="userActionForm.get('phone')?.invalid 
+                        && (userActionForm.get('phone')?.dirty || userActionForm.get('phone')?.touched)"
+        >Введите номер телефона</label>
+        <div class="message-text" *ngIf="userActionType===UserActionType.message">Мы свяжемся с вами при первой же возможности.</div>
         <button class="button" [disabled]="userActionForm.invalid" (click)="getConsultation()"
         *ngIf="userActionType===UserActionType.consultation">Заказать консультацию</button>
         <button class="button" [disabled]="userActionForm.invalid" (click)="sendServiceRequest()"
         *ngIf="userActionType===UserActionType.request">Оставить заявку</button>
+        <button class="button" (click)="closeInformMessage()"
+        *ngIf="userActionType===UserActionType.message">Окей</button>
     </div>
 
 </div>

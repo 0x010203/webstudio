@@ -1,0 +1,19 @@
+<div class="banner">
+    <div class="banner-info">
+        <div class="banner-info-title">{{bannerInfo.title}}</div>
+        <div class="banner-info-description">
+            <span>{{bannerInfo.descriptionSpan1}}</span>
+            {{bannerInfo.descriptionText1}}
+            <span>{{bannerInfo.descriptionSpan2}}</span>
+            {{bannerInfo.descriptionText2}}</div>
+        <div class="banner-info-additional">
+            {{bannerInfo.descriptionAddedInfo}}
+        </div>    
+        <button class="button">
+            Подробнее
+        </button>
+    </div>
+    <div class="banner-image" >
+        <img src='{{"../../../assets/images/pages/banners/banner" + bannerInfo.id + ".png"}}' alt="Услуга">
+    </div>
+</div>

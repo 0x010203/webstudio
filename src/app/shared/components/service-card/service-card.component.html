@@ -1,0 +1,19 @@
+<div class="service-card">
+    <div class="service-card-image">
+        <img src='{{"../../../assets/images/pages/services/service" + service.id + ".png"}}' alt="Услуга">
+    </div>
+    <div class="service-card-title">
+        {{service.title}}
+    </div>
+    <div class="service-card-description">
+        {{service.description}}
+    </div>
+    <div class="service-card-action">
+        <div class="service-card-action-price">
+            От {{service.price.toLocaleString('ru-RU')}}₽
+        </div>
+        <div class="service-card-action-button">
+            <button class="button" (click)="serviceAboutShow()">Подробнее</button>    
+        </div>
+    </div>
+</div>

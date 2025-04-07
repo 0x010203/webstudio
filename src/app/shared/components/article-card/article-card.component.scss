@@ -1,0 +1,61 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/fonts";
+
+.article-card {
+    width: 292px;
+    height: 571px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+
+    .article-card-image {
+        position: relative;
+        margin-bottom: 15px;
+        width: 291px;
+        height: 291px;
+
+        .article-card-category {
+            position: absolute;
+            top: 10px;
+            right: 9px;
+            padding: 10px 18px;
+            background-color: $fill-btn-text-color;
+
+            font-weight: 400;
+            font-size: 11px;
+            text-align: center;
+            color: $dark-element-color;
+            border-radius: 5px;
+        }
+    }
+
+    .article-card-title {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 130%;
+        color: $title-text-color;
+        margin-bottom: 20px;
+    }
+
+    .article-card-description {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: $text-color;
+    }
+
+    .article-card-action {
+        margin-top: auto;
+
+        a {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 130%;
+            text-decoration-line: underline;
+            color: $dark-element-color;
+        }
+    }
+
+}

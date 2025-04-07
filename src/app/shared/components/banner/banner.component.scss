@@ -1,0 +1,83 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/fonts";
+
+.banner {
+    width: 100%;
+    position: relative;
+    background-color: $element-color;
+    height: 500px;
+
+    .banner-info {
+        padding-left: 80px;
+        padding-top: 100px;
+        
+
+        .banner-info-title {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 130%;
+            text-transform: uppercase;
+            color: $dark-element-color;
+        }
+
+        .banner-info-description {
+            max-width: 610px;
+            font-family: 'Lora';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 50px;
+            line-height: 130%;
+            color: $fill-btn-text-color;
+            margin-bottom: 20px;
+
+            span {
+                color: $dark-element-color;
+            }
+        }
+
+        .banner-info-additional {
+            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 130%;
+            max-width: 456px;
+
+            color: $fill-btn-text-color;
+
+
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 15px 33px;
+            //margin-bottom: 85px;
+            font-size: 16px;
+            line-height: 130%;
+            color: $fill-btn-text-color;
+
+        }
+    }
+
+    //height: 500px;
+    .banner-image {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 750px;
+        //mask-image: url('data:image/svg+xml,<svg width="367" height="245" viewBox="0 0 367 245" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M366 0.5H105C96.6788 109.287 74.2543 162.762 2 244.5H366V0.5Z" stroke="none" fill-opacity="0" opacity:"0"/></svg>');
+        mask-image: url('../../../../assets/images/pages/banners/maskround.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
+        //clip-path: border-box circle(1402px at -702px -702px);
+        //mask-image: radial-gradient(circle,);
+
+        img{
+            display: block;
+            height: 100%;
+        }
+    }
+}

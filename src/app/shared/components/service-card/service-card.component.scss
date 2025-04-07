@@ -1,0 +1,53 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/fonts";
+
+.service-card {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    width: 291px;
+    height: 498px;
+    display: flex;
+    flex-direction: column;
+
+    .service-card-image {
+        width: 291px;
+        height: 291px;
+        //background-color: red;
+        margin-bottom: 15px;
+    }
+
+    .service-card-title {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 130%;
+        color: $title-text-color;
+        margin-bottom: 10px;
+    }
+
+    .service-card-description {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: $text-color;
+
+    }
+
+    .service-card-action {
+        margin-top: auto;
+        @include flex-aicenter-jcsbetween;
+
+        .service-card-action-price {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 130%;
+            color: $title-text-color;
+        }
+
+        .service-card-action-button {
+            .button {
+                padding: 15px 33px;
+            }
+        }
+    }
+}

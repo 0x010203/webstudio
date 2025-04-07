@@ -1,0 +1,49 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/fonts";
+
+.review-card {
+    width: 396px;
+    height: 267px;
+    padding: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+
+    box-sizing: border-box;
+
+    background: $fill-btn-text-color;
+    border: 1.5px solid $dark-element-color;
+    border-radius: 5px;
+
+    .review-card-title {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+
+        .review-card-title-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 18px;
+        }
+
+        .review-card-title-text {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 130%;
+            color: $dark-element-color;
+
+
+        }
+    }
+
+    .review-card-info {
+
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        color: $text-color;
+
+
+    }
+}

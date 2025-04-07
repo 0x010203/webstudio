@@ -1,0 +1,292 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/fonts";
+
+.main {
+    margin-bottom: 120px;
+
+    .container {
+        .carousel {
+            position: relative;
+
+            .carousel-arrow-prev,
+            .carousel-arrow-next {
+                position: absolute;
+                top: 50%;
+
+                z-index: 2;
+            }
+
+            .carousel-arrow-prev {
+                left: 11px;
+            }
+
+            .carousel-arrow-next {
+                right: 11px;
+            }
+        }
+
+
+    }
+}
+
+.services {
+    margin-bottom: 120px;
+
+    .container {
+        .services-title {
+            font-family: 'Lora', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 38px;
+            line-height: 130%;
+            color: $title-text-color;
+            margin-bottom: 40px;
+        }
+
+        .services-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 27px;
+        }
+
+    }
+}
+
+.about {
+    margin-bottom: 120px;
+
+    .container {
+        @include flex-aicenter;
+
+        .about-image {
+            margin-right: 68px;
+        }
+
+        .about-info {
+            .about-info-title {
+                font-family: 'Lora', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 38px;
+                line-height: 130%;
+                color: $title-text-color;
+                margin-bottom: 20px;
+            }
+
+            .about-info-description {
+                font-family: 'Montserrat', sans-serif;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 130%;
+                color: $message-text-color;
+                margin-bottom: 40px;
+            }
+
+            .about-info-advantages {
+                .about-info-advantages-title {
+                    font-family: 'Lora', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 26px;
+                    line-height: 130%;
+                    color: $title-text-color;
+                    margin-bottom: 20px;
+
+                }
+
+                .about-info-advantages-items {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    row-gap: 20px;
+                    column-gap: 71px;
+
+                    .about-info-advantages-item {
+                        display: flex;
+                        align-items: center;
+
+                        .about-info-advantages-item-number {
+                            min-width: 40px;
+                            font-family: 'Lora', sans-serif;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 50px;
+                            line-height: 130%;
+                            color: $title-text-color;
+                            position: relative;
+                            text-align: center;
+
+                            &::after {
+                                content: '';
+                                background-color: $element-color;
+                                border-radius: 50%;
+                                width: 40px;
+                                height: 40px;
+                                position: absolute;
+                                top: 20px;
+                                left: 0;
+                                z-index: -1;
+                            }
+                        }
+
+                        &:first-child::after {
+                            background-color: red;
+                            //left: -9px;
+                        }
+
+                        .about-info-advantages-item-text {
+                            max-width: 256px;
+                            margin-left: 20px;
+                            font-family: 'Montserrat', sans-serif;
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 130%;
+
+                            color: $message-text-color;
+
+                            span {
+                                font-weight: 500;
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+.popular-articles {
+    margin-bottom: 120px;
+
+    .container {
+        .popular-articles-title {
+            font-family: 'Lora', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 38px;
+            line-height: 130%;
+            color: $title-text-color;
+            margin-bottom: 40px;
+
+        }
+
+        .popular-articles {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 26px;
+        }
+
+        .popular-articles-link {
+            //margin-bottom: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            color: $title-text-color;
+            position: relative;
+            margin-right: 40px;
+            display: flex;
+            justify-self: flex-end;
+
+            svg {
+                position: absolute;
+                top: 5px;
+                right: -30px;
+                //margin-left: 14px;
+            }
+        }
+    }
+}
+
+.reviews {
+    margin-bottom: 120px;
+
+    .container {
+        .reviews-carousel {
+            position: relative;
+            //padding-left: 25px;
+            //padding-right: 25px;
+
+            .reviews-arrows {
+                position: absolute;
+                top: calc(50% - 9px);
+                z-index: 2;
+                display: inline-flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .reviews-arrows-move-backward img {
+                    transform: rotateY(180deg);
+                    margin-left: -25px;
+                }
+
+                .reviews-arrows-move-forward img {
+                    margin-right: -25px;
+                }
+            }
+        }
+    }
+}
+
+.contacts {
+    margin-bottom: 120px;
+    .container {
+        display: flex;
+
+        .contacts-map {
+            margin-right: 26px;
+        }
+
+        .contacts-info {
+            .contacts-info-title {
+                font-family: 'Lora', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 38px;
+                line-height: 130%;
+                color: $title-text-color;
+                margin-bottom: 20px;
+
+            }
+
+            .contacts-info-items {
+                display: inline-flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .contacts-info-item {
+                    max-width: 501px;
+
+                    .contacts-info-item-title {
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 130%;
+                        color: $title-text-color;
+                        margin-bottom: 10px;
+                    }
+
+                    .contacts-info-item-text {
+                        font-family: 'Montserrat',sans-serif;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 130%;
+                        color: $text-color;
+
+                    }
+
+                    .contacts-info-item-social{
+                        display: inline-flex;
+                        gap: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

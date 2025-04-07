@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalService } from '../../services/modal.service';
 import { UserActionFormComponent } from '../../components/user-action-form/user-action-form.component';
 import { UserActionType } from '../../../../assets/types/user-active-type.type';
 
@@ -13,17 +14,19 @@ export class FooterComponent implements OnInit {
 
   @ViewChild(UserActionFormComponent)
   private userActionFormComponent!: UserActionFormComponent;
+  userActionType: UserActionType = UserActionType.consultation;
 
   UserActionType = UserActionType;
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
   }
 
   callMe(){
     this.showUserActionForm = true;
-    this.userActionFormComponent.isShowed = true;
+    this.modalService.show(this.userActionType);
+    //this.userActionFormComponent.isShowed = true;
   } 
 
   

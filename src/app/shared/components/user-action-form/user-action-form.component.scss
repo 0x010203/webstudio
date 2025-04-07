@@ -2,7 +2,7 @@
 @import "../../../../assets/styles/mixins";
 @import "../../../../assets/styles/fonts";
 
-.user-action-form{
+.user-action-form {
     font-family: 'Montserrat', sans-serif;
     background: rgba(117, 161, 241, 0.2);
     z-index: 1000;
@@ -11,49 +11,73 @@
     left: 0;
     width: 100%;
     height: 100%;
-    @include flex-aicenter-jcsbetween;  
-    .user-action-form-content{
+    @include flex-aicenter-jcsbetween;
+
+    .user-action-form-content {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        padding: 95px 153px;
+        //padding-top: 95px;
+        width: 727px;
+        height: 489px;
         background-color: #FFFFFF;
         border: 2px solid $dark-element-color;
         border-radius: 10px;
         @include flex-aicenter;
+        justify-content: center;
         flex-direction: column;
-        .user-action-form-close{
+
+        .user-action-form-close {
             position: absolute;
             right: 30px;
             top: 30px;
             cursor: pointer;
         }
 
-        .user-action-form-title{
-            width: 406px;
+        .user-action-form-title {
+            max-width: 443px;
             margin-bottom: 20px;
         }
 
-        .input{
+        .input {
             width: 422px;
             box-sizing: border-box;
             margin-bottom: 5px;
             font-size: 14px;
-
-          
         }
 
-        .button{
+        label {
+            font-size: 14px;
+            //width: 100%;
+            text-align: start;
+            margin-bottom: 10px;
+            color: red;
+        }
+
+        .button {
             margin-top: 15px;
             padding: 15px;
             width: 422px;
             box-sizing: border-box;
             font-size: 16px;
 
-            &:disabled{
+            &:disabled {
                 background-color: gray;
                 cursor: default;
+            }
+        }
+
+        .message-text {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 130%;
+            text-align: center;
+
+            color: $message-text-color;
+            margin-bottom: 25px;
+            & + .button{
+                width: 73px;
             }
         }
     }
