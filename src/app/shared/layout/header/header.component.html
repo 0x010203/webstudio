@@ -12,11 +12,11 @@
             <div class="main-menu header-menu">
                 <nav>
                     <ul>
-                        <li  routerLinkActive="active"><a routerLink="/">Услуги</a></li>
-                        <li  routerLinkActive="active"><a routerLink="/blog">Статьи</a></li>
-                        <li><a routerLink="/">О нас</a></li>
-                        <li><a routerLink="/">Отзывы</a></li>
-                        <li><a routerLink="/">Контакты</a></li>
+                        <li><a routerLink="/"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" fragment="services">Услуги</a></li>
+                        <li><a routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Статьи</a></li>
+                        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" fragment="about">О нас</a></li>
+                        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" fragment="reviews">Отзывы</a></li>
+                        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Контакты</a></li>
                     </ul>
                 </nav>
             </div>

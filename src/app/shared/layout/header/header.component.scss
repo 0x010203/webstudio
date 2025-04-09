@@ -30,10 +30,13 @@
                         &:last-child{
                         margin-right: 0;
                         }
-
-                        &.active{
-                            color: red;
+                        
+                        a {
+                            &.active{
+                                color: $title-text-color;
+                            }
                         }
+                        
      
                     }
                 }
