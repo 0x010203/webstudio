@@ -1,5 +1,5 @@
 export enum UserActionType {
-  request = 'request',
+  request = 'order',
   consultation = 'consultation',
   message = 'message',
 }

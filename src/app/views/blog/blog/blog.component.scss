@@ -1,0 +1,159 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/fonts";
+
+.blog {
+    .container {
+        .blog-title {
+            font-family: 'Lora', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 38px;
+            line-height: 130%;
+            color: $title-text-color;
+            margin-top: 80px;
+            margin-bottom: 40px;
+        }
+
+        .blog-filters {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .blog-filter {
+                display: inline-flex;
+                padding: 8px 20px;
+                font-family: 'Montserrat', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 130%;
+                color: $title-text-color;
+                box-sizing: border-box;
+                flex-direction: row;
+                align-items: center;
+                gap: 8px;
+
+                //background: #FFFFFF;
+                border: 1.5px solid $title-text-color;
+                border-radius: 5px;
+
+                // svg {
+                //     margin-left: 8px;
+                // }
+            }
+
+            .blog-filters-options {
+                min-height: 45px;
+                display: flex;
+                //align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                position: relative;
+
+                .blog-filters-options-title {
+
+                    font-family: 'Montserrat', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 130%;
+                    color: $text-color;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    &.close {
+                        width: 148px;
+                        padding: 0;
+
+                    }
+
+                    &.open {
+                        width: 257px;
+                        padding: 12px 23px;
+                        background-color: $element-color;
+
+                        border-radius: 5px 5px 0px 0px;
+
+                    }
+                }
+
+                .blog-filters-options-items {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 14px;
+                    right: 0;
+                    top: 45px;
+                    z-index: 3;
+                    width: 100%;
+                    box-sizing: border-box;
+                    background: $fill-btn-text-color;
+                    border: 1.5px solid $element-color;
+                    border-radius: 0px 0px 5px 5px;
+                    padding: 12px 23px;
+                    .blog-filters-options-item{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        color: $text-color-disabled;
+
+                        &.active{
+                            color: $message-text-color;
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+        .blog-atricles {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            row-gap: 40px;
+            column-gap: 24px;
+            margin-bottom: 40px;
+
+            .blog-items {
+
+            }
+        }
+
+        .pagination {
+            min-height: 46px;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+
+            .pagination-pages {
+                display: flex;
+                gap: 10px;
+
+                .pagination-page {
+                    padding: 10px;
+                    // width: 28px;
+                    // height: 46px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 20px;
+                    color: $text-color;
+                    cursor: pointer;
+
+                    &.active{
+                        color: $element-color;
+                    }
+
+                }
+            }
+
+            .pagination-arrow{
+                cursor: pointer;
+            }
+        }
+    }
+}

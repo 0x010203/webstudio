@@ -1,6 +1,6 @@
 <div class="article-card">
     <div class="article-card-image">
-        <img src="{{serverStaticPath+article.url}}" alt="Услуга">
+        <img src="{{'../../../../../../assets/images/public/images/'+article.image}}" alt="Услуга">
         <div class="article-card-category">
             {{article.category}}
         </div>
@@ -13,7 +13,7 @@
         {{article.description}}
     </div>
     <div class="article-card-action">
-        <a [routerLink]="article.url">Читать дальше</a>
+        <a [routerLink]="'/article/'+ article.url" (click)="navigate()">Читать дальше</a>
     
     </div>
 </div>

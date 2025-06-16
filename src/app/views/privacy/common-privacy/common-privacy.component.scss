@@ -1,0 +1,29 @@
+@import "../../../../assets/styles/variables";
+
+.privacy {
+    .container {
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        line-height: 130%;
+
+        h2 {
+            font-weight: 500;
+            font-size: 20px;
+            color: $title-text-color;
+        }
+
+        h3 {
+            font-weight: 500;
+            font-size: 14px;
+            color: $text-color;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 14px;
+            color: $text-color;
+        }
+
+        ;
+    }
+}

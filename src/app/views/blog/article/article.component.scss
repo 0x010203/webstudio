@@ -1,0 +1,339 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/fonts";
+
+.article {
+    .container {
+        .article-breadcrumbs {
+            margin-top: 80px;
+            margin-bottom: 60px;
+
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 130%;
+            color: $dark-element-color;
+
+            span {
+                font-weight: 400;
+                line-height: 130%;
+                color: $element-color;
+                cursor: pointer;
+
+                &::after {
+                    content: '/';
+                    margin-left: 8px;
+                    margin-right: 8px;
+                }
+            }
+
+
+        }
+
+        .article-info {
+            .article-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 60px;
+
+                .article-header-info {
+                    max-width: 607px;
+
+                    .article-header-info-title {
+                        font-family: 'Lora';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 38px;
+                        line-height: 130%;
+                        color: $title-text-color;
+                        margin-bottom: 40px;
+                    }
+
+                    .article-header-info-text {
+                        font-family: 'Montserrat', sans-serif;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 20px;
+                        line-height: 130%;
+                        color: $title-text-color;
+
+
+                    }
+                }
+            }
+
+            .article-body {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 60px;
+
+                .article-body-info {
+                    max-width: 818px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 130%;
+
+                    .article-body-info-text {
+
+
+                        h1 {
+                            font-family: 'Lora', sans-serif;
+                            font-weight: 400;
+                            font-size: 38px;
+                            color: $title-text-color;
+                        }
+
+                        h3 {
+                            font-size: 20px;
+                            color: $title-text-color;
+                        }
+
+                        p {
+                            font-size: 14px;
+                            color: $text-color;
+                        }
+
+                        p & b {
+                            font-weight: 500;
+                            font-size: 14px;
+                            color: $text-color;
+                        }
+                    }
+
+                    .article-body-info-social {
+                        margin-top: 60px;
+                        display: flex;
+
+                        .article-body-info-social-text {
+                            font-family: 'Montserrat', sans-serif;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 130%;
+                            color: $title-text-color;
+                            margin-right: 20px;
+                        }
+
+                        .article-body-info-social-icons {
+                            display: flex;
+                            gap: 14px;
+                        }
+                    }
+
+                    .article-body-info-comments {
+                        margin-top: 60px;
+
+                        .article-body-info-comments-title {
+                            font-family: 'Lora', sans-serif;
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 38px;
+                            line-height: 130%;
+                            color: $title-text-color;
+
+                        }
+
+                        .article-body-info-comments-empty {
+                            font-family: 'Montserrat', sans-serif;
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 130%;
+                            color: $text-color;
+                            margin-top: 20px;
+                        }
+
+                        .article-body-info-comments-auth {
+                            margin-top: 20px;
+                            font-family: 'Montserrat', sans-serif;
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 130%;
+                            color: $text-color;
+
+                            a {
+                                color: $link-text-color;
+                                text-decoration: none;
+                            }
+                        }
+
+                        .article-body-info-comments-input {
+                            width: 100%;
+                            margin-top: 40px;
+                            //gap: 20px;
+
+                            .article-body-info-comments-input-text {
+                                width: 100%;
+                                margin-bottom: 20px;
+
+                                textarea {
+                                    font-family: 'Montserrat', sans-serif;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    font-size: 14px;
+                                    line-height: 130%;
+                                    -webkit-box-sizing: border-box;
+                                    -moz-box-sizing: border-box;
+                                    box-sizing: border-box;
+                                    width: 100%;
+                                    max-width: 818px;
+                                    box-sizing: border-box;
+                                    background: #FFFFFF;
+                                    border: 1.5px solid $title-text-color;
+                                    border-radius: 3px;
+                                    padding: 20px;
+
+                                    &:focus {
+                                        outline: none !important;
+                                        border: 2px solid $dark-element-color;
+                                    }
+
+                                    &::placeholder {
+
+                                        color: $placeholder-text-color;
+                                    }
+
+
+
+                                    &:focus::-webkit-input-placeholder {
+                                        color: transparent
+                                    }
+
+                                    &:focus::-moz-placeholder {
+                                        color: transparent
+                                    }
+
+                                    &:focus:-moz-placeholder {
+                                        color: transparent
+                                    }
+
+                                    &:focus:-ms-input-placeholder {
+                                        color: transparent
+                                    }
+                                }
+                            }
+
+                            .article-body-info-comments-input-button {
+                                .button {
+                                    padding: 15px 92px;
+                                }
+                            }
+                        }
+
+                        .article-body-info-comments-items {
+                            margin-top: 60px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 40px;
+
+
+
+                            .article-body-info-comments-item {
+                                display: flex;
+                                flex-direction: column;
+                                font-family: 'Montserrat', sans-serif;
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 14px;
+                                line-height: 140%;
+                                color: $text-color;
+
+                                .article-body-info-comments-item-title {
+                                    display: flex;
+                                    gap: 26px;
+                                    margin-bottom: 15px;
+
+                                    .article-body-info-comments-item-title-image {}
+
+                                    .article-body-info-comments-item-title-info {
+                                        display: flex;
+                                        flex-direction: column;
+                                        gap: 10px;
+                                        font-family: 'Montserrat', sans-serif;
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        line-height: 130%;
+
+                                        .article-body-info-comments-item-title-info-name {
+                                            font-size: 18px;
+                                            color: $title-text-color;
+                                        }
+
+                                        .article-body-info-comments-item-title-info-date {
+                                            font-size: 14px;
+                                            color: $text-color-disabled;
+                                        }
+
+                                    }
+
+                                }
+
+                                .article-body-info-comments-item-actions {
+                                    display: flex;
+                                    gap: 15px;
+
+                                    .article-body-info-comments-item-actions-item {
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 2px;
+
+                                        span {
+                                            display: inline-block;
+                                            font-family: 'Montserrat', sans-serif;
+                                            font-style: normal;
+                                            font-weight: 600;
+                                            font-size: 14px;
+                                            line-height: 140%;
+                                            color:$text-color;
+
+                                            &.myaction{
+                                                color: $dark-element-color;
+                                            }
+                                        }
+
+                                        svg {
+                                            fill: none;
+                                            stroke: $text-color; //$dark-element-color;
+                                            cursor: pointer;
+
+                                            &.myaction {
+                                                stroke: $dark-element-color;
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .article-body-related-articles {
+                    .article-body-related-articles-title {
+                        font-family: 'Lora';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 26px;
+                        line-height: 130%;
+                        color: $title-text-color;
+                        margin-bottom: 20px;
+                    }
+
+                    .article-body-related-articles-items {
+                        gap: 60px;
+                        display: flex;
+                        flex-direction: column;
+
+
+
+                    }
+
+                }
+            }
+
+        }
+    }
+}

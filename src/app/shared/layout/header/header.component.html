@@ -12,11 +12,11 @@
             <div class="main-menu header-menu">
                 <nav>
                     <ul>
-                        <li><a routerLink="/"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" fragment="services">Услуги</a></li>
-                        <li><a routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Статьи</a></li>
-                        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" fragment="about">О нас</a></li>
-                        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" fragment="reviews">Отзывы</a></li>
-                        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Контакты</a></li>
+                        <li><a (click)="scrollTo('services')" routerLink="/"  routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams" fragment="services">Услуги</a></li>
+                        <li><a routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams">Статьи</a></li>
+                        <li><a (click)="scrollTo('about')"  routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams" fragment="about">О нас</a></li>
+                        <li><a (click)="scrollTo('reviews')" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams" fragment="reviews">Отзывы</a></li>
+                        <li><a (click)="scrollTo('contacts')" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams" fragment="contacts">Контакты</a></li>
                     </ul>
                 </nav>
             </div>
@@ -33,7 +33,14 @@
                         </svg>
                 </div>
                 <div class="header-account-text">
-                    Войти
+                    <a *ngIf="!isLogged" routerLink="/login">Войти</a>
+                    <a *ngIf="isLogged" [matMenuTriggerFor]="menu">Привет, {{userName}}</a>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <span (click)="logout()">Выйти</span>
+                        </button>
+                    </mat-menu>
+
                 </div>
             </div>
         </div>

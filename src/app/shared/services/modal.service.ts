@@ -11,7 +11,7 @@ export class ModalService {
   constructor() { }
 
   show(userActionType: UserActionType, service?: string){
-    
+    console.log(userActionType);
     this.isShowed$.next({isShow: true, userActionType, service});
   }
   

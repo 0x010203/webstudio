@@ -12,11 +12,11 @@
             <div class="main-menu footer-menu">
                 <nav>
                     <ul>
-                        <li><a routerLink="/">Услуги</a></li>
-                        <li><a routerLink="/">Статьи</a></li>
-                        <li><a routerLink="/">О нас</a></li>
-                        <li><a routerLink="/">Отзывы</a></li>
-                        <li><a routerLink="/">Контакты</a></li>
+                        <li><a (click)="scrollTo('services')" routerLink="/"  routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams" fragment="services">Услуги</a></li>
+                        <li><a routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams">Статьи</a></li>
+                        <li><a (click)="scrollTo('about')"  routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams" fragment="about">О нас</a></li>
+                        <li><a (click)="scrollTo('reviews')" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams" fragment="reviews">Отзывы</a></li>
+                        <li><a (click)="scrollTo('contacts')" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="linkActiveParams" fragment="contacts">Контакты</a></li>
                     </ul>
                 </nav>
             </div>

@@ -1,0 +1,94 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/fonts";
+
+.login {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 106px;
+        padding-bottom: 92px;
+
+        .auth-form {
+            min-width: 422px;
+
+            .auth-title {
+                font-family: 'Lora', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 36px;
+                line-height: 130%;
+                color: $title-text-color;
+
+                margin-bottom: 40px;
+            }
+
+            .auth-inputs {
+                width: 422px;
+                gap: 5px;
+                display: flex;
+                flex-direction: column;
+
+                .auth-input {
+                    .input {
+                        width: 100%;
+                        box-sizing: border-box;
+                    }
+                    label {
+                        font-family: 'Montserrat', sans-serif;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 12px;
+                        line-height: 130%;
+                        color: $text-color;
+                    }
+                }
+
+                .auth-checkbox {
+                    margin-top: 5px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 130%;
+                    color: $text-color;
+
+                    label {
+                        margin-left: 10px;
+                    }
+
+                }
+            }
+
+            .auth-button {
+                margin-top: 40px;
+                margin-bottom: 10px;
+                width: 100%;
+
+                .button {
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    width: 422px;
+                    &:disabled{
+                        background-color: $button-disabled-background;
+                        cursor: auto;
+                    }
+                }
+            }
+
+            .auth-link {
+                font-family: 'Montserrat', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 130%;
+                color: $message-text-color;
+
+                a {
+                    color: $dark-element-color;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
