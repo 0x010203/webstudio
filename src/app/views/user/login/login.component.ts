@@ -14,7 +14,7 @@ import { UserInfoType } from '../../../../assets/types/user-info.type';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginForm = this.fb.group({
+  protected loginForm = this.fb.group({
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.required]],
     rememberMe: [false],
@@ -30,17 +30,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login(): void {
-    if (
-      this.loginForm.valid &&
-      this.loginForm.value.email &&
-      this.loginForm.value.password
-    ) {
+    if (this.loginForm.valid && this.loginForm.value.email && this.loginForm.value.password ) {
       this.authService
-        .login(
-          this.loginForm.value.email,
-          this.loginForm.value.password,
-          !!this.loginForm.value.rememberMe
-        )
+        .login(this.loginForm.value.email, this.loginForm.value.password, !!this.loginForm.value.rememberMe)
         .subscribe({
           next: (data: LoginResponseType | DefaultResponseType) => {
             let error = null;
@@ -51,11 +43,7 @@ export class LoginComponent implements OnInit {
 
             const loginResponse: LoginResponseType = data as LoginResponseType;
 
-            if (
-              !loginResponse.accessToken ||
-              !loginResponse.refreshToken ||
-              !loginResponse.userId
-            ) {
+            if (!loginResponse.accessToken || !loginResponse.refreshToken || !loginResponse.userId) {
               error = 'Ошибка авторизации';
             }
 
@@ -64,22 +52,19 @@ export class LoginComponent implements OnInit {
               throw new Error(error);
             }
 
-            this.authService.setTokens(
-              loginResponse.accessToken,
-              loginResponse.refreshToken
-            );
+            this.authService.setTokens(loginResponse.accessToken, loginResponse.refreshToken);
             this.authService.userId = loginResponse.userId;
-            // this.authService
-            //   .getUserInfo()
-            //   .subscribe((data: DefaultResponseType | UserInfoType) => {
-            //     if ((data as DefaultResponseType).error !== undefined) {
-            //       throw new Error((data as DefaultResponseType).message);
-            //     }
-            //     if ((data as UserInfoType).name) {
-            //       this.authService.userName = (data as UserInfoType).name;
-            //       //console.log(this.userName);
-            //     }
-            //   });
+            this.authService
+              .getUserInfo()
+              .subscribe((data: DefaultResponseType | UserInfoType) => {
+                if ((data as DefaultResponseType).error !== undefined) {
+                  throw new Error((data as DefaultResponseType).message);
+                }
+                if ((data as UserInfoType).name) {
+                  this.authService.userName = (data as UserInfoType).name;
+                  //console.log(this.userName);
+                }
+              });
             this._snackBar.open('Вы успешно авторизовались');
             this.router.navigate(['/']);
           },

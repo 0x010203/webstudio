@@ -4,6 +4,7 @@ import { CommentsResponseType } from '../../../assets/types/comments-response.ty
 import { DefaultResponseType } from '../../../assets/types/default-response.type';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
+import { CommentActionEnumType, CommentActionType } from '../../../assets/types/comment-action.type';
 
 @Injectable({
   providedIn: 'root',
@@ -30,4 +31,29 @@ export class CommentsService {
       { withCredentials: true}
     );
   }
+
+  addActionToComment(idComment: string, action: CommentActionEnumType): Observable<DefaultResponseType>{
+    return this.http.post<DefaultResponseType>(
+      environment.api + 'comments/'+idComment+'/apply-action',
+      {
+        action: action
+      },
+      { withCredentials: true}
+    );
+  }
+
+  getActionToComment(idComment: string): Observable<DefaultResponseType | CommentActionType[]>{
+    return this.http.get<DefaultResponseType>(
+      environment.api + 'comments/'+idComment+'/actions',  { withCredentials: true}
+    );
+  }
+  getArticleCommentActions(articleId: string): Observable<DefaultResponseType | CommentActionType[]>{
+    return this.http.get<DefaultResponseType>(
+      environment.api + 'comments/article-comment-actions', { params:{articleId: articleId},  withCredentials: true}
+    );
+  }
+
+  
+
+  //getArticleComments(article: string): 
 }

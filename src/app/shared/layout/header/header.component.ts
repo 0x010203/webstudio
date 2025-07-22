@@ -9,37 +9,28 @@ import { tap } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isLogged: boolean;
-  userName: string = '';
+  protected isLogged: boolean;
+  protected userName: string = '';
 
-  constructor(private router: Router, private authService: AuthService,
-    private _snackBar: MatSnackBar,
-  ) { 
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private _snackBar: MatSnackBar
+  ) {
     this.isLogged = this.authService.getIsLoggedIn();
-    if (this.isLogged && !this.userName){
-      this.authService.getUserInfo()
-      .subscribe((data: DefaultResponseType | UserInfoType) => {
-                if ((data as DefaultResponseType).error !== undefined) {
-                  throw new Error((data as DefaultResponseType).message);
-                }
-                if ((data as UserInfoType).name) {
-                  const gettingUserName: string = (data as UserInfoType).name;
-                  this.authService.userName = gettingUserName;
-                  this.userName = gettingUserName;
-                }
-              }
-      )
+    if (this.isLogged && !this.userName) {
+      this.getUserInfo();
     }
   }
 
   linkActiveParams: IsActiveMatchOptions = {
     matrixParams: 'exact',
     queryParams: 'exact',
-    paths: 'exact' ,
-    fragment: 'exact' ,
+    paths: 'exact',
+    fragment: 'exact',
   };
 
   ngOnInit(): void {
@@ -47,7 +38,7 @@ export class HeaderComponent implements OnInit {
     // this.authService.isLogged$
     // .pipe(tap(value => console.log(`header:isLogged$.subscribe.tap ${value}`)))
     // .subscribe((isLoggedIn: boolean) => {
-      
+
     //   this.isLogged = isLoggedIn;
     //   if (isLoggedIn){
     //           this.authService
@@ -66,8 +57,29 @@ export class HeaderComponent implements OnInit {
     //   }
     // });
 
-    
+    this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
+      this.isLogged = isLoggedIn;
+      if (this.isLogged) {
+        this.getUserInfo();
+      } else {
+        this.userName = '';
+      }
+    });
+  }
 
+  private getUserInfo(): void {
+    this.authService
+      .getUserInfo()
+      .subscribe((data: DefaultResponseType | UserInfoType) => {
+        if ((data as DefaultResponseType).error !== undefined) {
+          throw new Error((data as DefaultResponseType).message);
+        }
+        if ((data as UserInfoType).name) {
+          const gettingUserName: string = (data as UserInfoType).name;
+          this.authService.userName = gettingUserName;
+          this.userName = gettingUserName;
+        }
+      });
   }
 
   logout(): void {
@@ -81,7 +93,6 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-
   doLogout(): void {
     this.authService.removeTokens();
     this.authService.userId = null;
@@ -90,15 +101,14 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  scrollTo(fragment: string): void{
-    this.router.navigate(['/'],{fragment}).then(()=>{
-      setTimeout(()=>{
+  scrollTo(fragment: string): void {
+    this.router.navigate(['/'], { fragment }).then(() => {
+      setTimeout(() => {
         const elem = document.getElementById(fragment);
-        if (elem){
-          elem.scrollIntoView({behavior: 'smooth'})
+        if (elem) {
+          elem.scrollIntoView({ behavior: 'smooth' });
         }
       }, 0);
-    })
+    });
   }
-
 }

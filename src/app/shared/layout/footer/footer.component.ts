@@ -15,11 +15,14 @@ export class FooterComponent implements OnInit {
 
   @ViewChild(UserActionFormComponent)
   private userActionFormComponent!: UserActionFormComponent;
-  userActionType: UserActionType = UserActionType.consultation;
+  private userActionType: UserActionType = UserActionType.consultation;
+  protected currentYear: number; 
 
   UserActionType = UserActionType;
 
-  constructor(private modalService: ModalService, private router: Router) { }
+  constructor(private modalService: ModalService, private router: Router) {
+    this.currentYear = new Date().getFullYear(); 
+   }
 
     linkActiveParams: IsActiveMatchOptions = {
       matrixParams: 'exact',

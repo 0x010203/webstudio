@@ -287,27 +287,45 @@
                                             font-weight: 600;
                                             font-size: 14px;
                                             line-height: 140%;
-                                            color:$text-color;
-
-                                            &.myaction{
-                                                color: $dark-element-color;
-                                            }
+                                            color: $text-color;
                                         }
 
                                         svg {
                                             fill: none;
                                             stroke: $text-color; //$dark-element-color;
                                             cursor: pointer;
+                                        }
 
-                                            &.myaction {
-                                                stroke: $dark-element-color;
-                                            }
+                                        &.myaction > svg{
+                                            stroke: $dark-element-color;
+                                        }
+                                        
+                                        &.myaction > span
+                                        {
+                                            color: $dark-element-color;
                                         }
 
                                     }
                                 }
                             }
+
+                            
                         }
+                        .article-body-info-comments-getmore {
+                                margin-top: 60px;
+                                font-family: 'Montserrat', sans-serif;
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 20px;
+                                line-height: 130%;
+                                color: $dark-element-color;
+                                display: inline-flex;
+                                align-items: center;
+                                cursor: pointer;
+                                svg{
+                                    margin-left: 10px;
+                                }
+                            }
                     }
                 }
 

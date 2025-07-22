@@ -17,11 +17,11 @@ export class AuthService {
   public userName: string = 'defaultUser';
 
   public isLogged$: Subject<boolean> = new Subject<boolean>();
-  private isLogged: boolean = false;
+  private _isLogged: boolean = false;
 
   constructor(private http: HttpClient) {
     //проверяем сразу, залогинен пользоваетль или нет
-    this.isLogged = !!localStorage.getItem(this.accessTokenKey);
+    this._isLogged = !!localStorage.getItem(this.accessTokenKey);
    }
 
   login(email: string, password: string, rememberMe: boolean) : Observable<DefaultResponseType | LoginResponseType>{
@@ -55,7 +55,7 @@ export class AuthService {
   }
 
   public getIsLoggedIn(): boolean{
-    return this.isLogged;
+    return this._isLogged;
   }
 
   public setTokens(accessToken: string , refreshToken: string): void{
@@ -70,7 +70,7 @@ export class AuthService {
     //     console.log(this.userName);
     //   }
     // });
-    this.isLogged = true;
+    this._isLogged = true;
     //оповещаем слушателей subject , что поменялось значение
     this.isLogged$.next(true);
   }
@@ -78,7 +78,7 @@ export class AuthService {
   public removeTokens(): void{
     localStorage.removeItem(this.accessTokenKey);
     localStorage.removeItem(this.refreshTokenKey);
-    this.isLogged = false;
+    this._isLogged = false;
     this.userName = 'defaultUser';
     //оповещаем слушателей subject , что поменялось значение
     this.isLogged$.next(false);

@@ -21,28 +21,37 @@
             align-items: center;
             justify-content: space-between;
 
-            .blog-filter {
-                display: inline-flex;
-                padding: 8px 20px;
-                font-family: 'Montserrat', sans-serif;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 130%;
-                color: $title-text-color;
-                box-sizing: border-box;
-                flex-direction: row;
-                align-items: center;
-                gap: 8px;
+            .blog-filters-items {
+                display: flex;
+                align-items: flex-start;
+                
 
-                //background: #FFFFFF;
-                border: 1.5px solid $title-text-color;
-                border-radius: 5px;
+                .blog-filters-item {
+                    
+                    .blog-filter {
+                        margin-right: 10px;
+                        display: inline-flex;
+                        padding: 8px 20px;
+                        font-family: 'Montserrat', sans-serif;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 130%;
+                        color: $title-text-color;
+                        box-sizing: border-box;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 8px;
+                        border: 1.5px solid $title-text-color;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                }
 
-                // svg {
-                //     margin-left: 8px;
-                // }
+
             }
+
+
 
             .blog-filters-options {
                 min-height: 45px;
@@ -94,13 +103,14 @@
                     border: 1.5px solid $element-color;
                     border-radius: 0px 0px 5px 5px;
                     padding: 12px 23px;
-                    .blog-filters-options-item{
+
+                    .blog-filters-options-item {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
                         color: $text-color-disabled;
 
-                        &.active{
+                        &.active {
                             color: $message-text-color;
                         }
                     }
@@ -117,9 +127,7 @@
             column-gap: 24px;
             margin-bottom: 40px;
 
-            .blog-items {
-
-            }
+            .blog-items {}
         }
 
         .pagination {
@@ -144,14 +152,14 @@
                     color: $text-color;
                     cursor: pointer;
 
-                    &.active{
+                    &.active {
                         color: $element-color;
                     }
 
                 }
             }
 
-            .pagination-arrow{
+            .pagination-arrow {
                 cursor: pointer;
             }
         }

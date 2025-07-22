@@ -8,7 +8,7 @@ import { ArticleCategoryType } from '../../../../assets/types/article-category.t
 import { AppliedFilterType } from '../../../../assets/types/applied-filter.type';
 import { CategoryService } from '../../../shared/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { debounceTime } from 'rxjs';
+import { debounceTime, filter } from 'rxjs';
 import { ActiveParamsUtil } from '../../../shared/utils/active-params.util';
 
 @Component({
@@ -24,45 +24,40 @@ export class BlogComponent implements OnInit {
     private router: Router
   ) {}
 
-  params: ActiveParamsType = {};
-  articles: ArticleType[] = [];
-  pages: number[] = [];
+  //private params: ActiveParamsType = {};
+  protected articles: ArticleType[] = [];
+  protected pages: number[] = [];
   //activePage: number = 1;
-  articleCategories: ArticleCategoryType[] = [];
-  activeParams: ActiveParamsType = { categories: [] };
-  appliedFilters: AppliedFilterType[] = [];
-  filtersOpen = false;
+  protected articleCategories: ArticleCategoryType[] = [];
+  protected activeParams: ActiveParamsType = { categories: [] };
+  //appliedFilters: AppliedFilterType[] = [];
+  protected filtersOpen = false;
 
   ngOnInit(): void {
-
-    this.articleService
-      .getArticles(this.params)
-      .subscribe((data: ArticlesResponseType | DefaultResponseType) => {
-        if ((data as DefaultResponseType).error !== undefined) {
-          throw new Error((data as DefaultResponseType).message);
-        }
-
-        this.articles = (data as ArticlesResponseType).items;
-        this.pages = Array.from(
-          { length: (data as ArticlesResponseType).pages },
-          (_, i) => i + 1
-        );
-        this.processArticles();
-        //console.log(this.pages);
-
-        // this.articles.forEach(element => {
-        //   const category = this.articleCategories.find((item)=>{return item  === element.category});
-        //   if (!category){
-        //     this.articleCategories.push(element.category);
-        //     //console.log(this.articleCategories);
-        //   }
-
-        //});
-      });
-
     this.activatedRoute.queryParams.subscribe((params) => {
-      //console.log('this.activatedRoute.queryParams.subscribe');
+
       this.activeParams = ActiveParamsUtil.processParams(params);
+
+      this.articleService
+        .getArticles(this.activeParams)
+        .subscribe((data: ArticlesResponseType | DefaultResponseType) => {
+          if ((data as DefaultResponseType).error !== undefined) {
+            throw new Error((data as DefaultResponseType).message);
+          }
+          const articlesFromResponse: ArticlesResponseType = (data as ArticlesResponseType);
+          this.articles = articlesFromResponse.items;
+          this.pages = Array.from(
+            { length: articlesFromResponse.pages },
+            (_, i) => i + 1
+          );
+          if (this.activeParams && this.activeParams.page && this.activeParams.page>articlesFromResponse.pages){
+            //console.log('this.activeParams.page: ',this.activeParams.page, 'articlesFromResponse.pages:', articlesFromResponse.pages);
+            //переходим на последнюю страницу, если после сброса фильтров не хватает данных
+            this.activeParams.page = articlesFromResponse.pages;
+          }
+
+          this.processArticles();
+        });
 
       this.categoryService
         .getCategories()
@@ -71,33 +66,53 @@ export class BlogComponent implements OnInit {
             throw new Error((data as DefaultResponseType).message);
           }
           this.articleCategories = data as ArticleCategoryType[];
-          //this.processCategories();
-          //console.log(this.articleCategories );
+          this.setCategoriesUsed();
         });
-
-      if (this.activeParams.categories){
-        this.processCategories();
-      }
-      //console.log(this.activeParams);
-
-      
-      //console.log('this.activatedRoute.queryParams');
-      //console.log(this.activeParams);
     });
   }
 
-  processCategories(): void {
-    // if (this.activeParams.categories && this.activeParams.categories.length>0) {
-    //   this.activeParams.categories.forEach((item: string)=>{
-    //     const category =  this.articleCategories.find (category => category.url === item);
-    //     if (!category){
-    //       //не нашли категорию, надо добавить
-    //     }
-    //   })
-    // }
+  protected turnOffCategoryFromFilter(category: ArticleCategoryType): void {
+    this.changeFilterOption(category);
   }
 
-  openPrevPage() {
+  private getArticles() {
+    this.categoryService.getCategories().subscribe((data) => {
+      this.articleCategories = data as ArticleCategoryType[];
+
+      this.articleService.getArticles(this.activeParams).subscribe((data) => {
+        if ((data as DefaultResponseType).error === undefined) {
+          const articles = data as ArticlesResponseType;
+          this.articles = articles.items;
+          this.pages = [];
+          for (let i = 0; i < articles?.pages; i++) {
+            this.pages.push(i + 1);
+          }
+        }
+      });
+
+      this.processArticles();
+    });
+  }
+
+  private setCategoriesUsed(): void {
+    //проход по категориям в параметрах и пометка используемых категорий в массиве категорий
+    this.articleCategories.forEach((category) => {
+      if (
+        this.activeParams.categories &&
+        this.activeParams.categories.length > 0
+      ) {
+        if (this.activeParams.categories.includes(category.url)) {
+          category.used = true;
+        } else {
+          category.used = false;
+        }
+      } else {
+        category.used = false;
+      }
+    });
+  }
+
+  protected openPrevPage() {
     if (this.activeParams.page && this.activeParams.page > 1) {
       this.activeParams.page--;
       this.router.navigate(['/blog'], {
@@ -106,13 +121,14 @@ export class BlogComponent implements OnInit {
     }
   }
 
-  openPage(page: number) {
+  protected openPage(page: number) {
     this.activeParams.page = page;
     this.router.navigate(['/blog'], {
       queryParams: this.activeParams,
     });
   }
-  openNextPage() {
+
+  protected openNextPage() {
     if (this.activeParams.page && this.activeParams.page < this.pages.length) {
       this.activeParams.page++;
       this.router.navigate(['/blog'], { queryParams: this.activeParams });
@@ -124,39 +140,39 @@ export class BlogComponent implements OnInit {
     }
   }
 
-  toggleFiltersOpen() {
+  protected toggleFiltersOpen() {
     this.filtersOpen = !this.filtersOpen;
   }
 
-  changeFilterOption(category: ArticleCategoryType): void {
-    console.log('changeFilterOption');
-    //console.log(category);
-    //console.log(this.activeParams);
-    //const param : ActiveParamsType = this.activeParams.categories?.find((elem)=>{elem === })
-    //this.activeParams.categories?.push(category.url);
-    if (category.used){
-      //надо убрать из фильтра и строки поиска
-      this.activeParams.categories = this.activeParams.categories?.filter(item=>item !== category.url);
-      category.used = false;
-    } else{
-      //добавить к фильтру и в адресную строку
-      this.activeParams.categories?.push(category.url);
-      category.used = true;
+  protected changeFilterOption(category: ArticleCategoryType): void {
+    if (
+      this.activeParams.categories &&
+      this.activeParams.categories.length > 0
+    ) {
+      const existingCategoryParams = this.activeParams.categories.find(
+        (item) => item === category.url
+      );
+      if (existingCategoryParams) {
+        //есть категория в url, т.е. применен фильтр
+        this.activeParams.categories = this.activeParams.categories.filter(
+          (item) => item !== category.url
+        );
+      } else {
+        this.activeParams.categories = [
+          ...this.activeParams.categories,
+          category.url,
+        ];
+      }
+    } else {
+      this.activeParams.categories = [category.url];
     }
-    this.router.navigate(['/blog'], { queryParams: this.activeParams });
-    //console.log('changeFilterOption this.activeParams:');
-    //console.log(this.activeParams);
+
+    this.setCategoriesUsed();
+    this.getArticles();
   }
 
-  processArticles() {
-    console.log('processArticles');
-    // this.activatedRoute.queryParams
-    //   .pipe(debounceTime(500))
-    //   .subscribe((params) => {
-    //     console.log('processArticles');
-    //     console.log(params);
-    //     this.activeParams = ActiveParamsUtil.processParams(params);
-    //   });
+  protected processArticles() {
+    this.router.navigate([], { queryParams: this.activeParams });
   }
 
   @HostListener('document:click', ['$event'])

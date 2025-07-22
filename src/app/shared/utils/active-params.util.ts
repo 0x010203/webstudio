@@ -14,7 +14,7 @@ export class ActiveParamsUtil {
     if (params.hasOwnProperty('page')) {
       activeParams.page = +params['page'];
     }
-    console.log(`ActiveParamsUtil.processParams:`);
+    //console.log(`ActiveParamsUtil.processParams:`);
     return activeParams;
   }
 }

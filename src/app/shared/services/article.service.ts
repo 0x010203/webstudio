@@ -21,6 +21,7 @@ export class ArticleService {
 
   getArticles(params: ActiveParamsType) : Observable<ArticlesResponseType | DefaultResponseType>
   {
+    console.log('params:', params);
     return this.http.get<ArticlesResponseType | DefaultResponseType>(environment.api+'articles', {params: params});
   }
 

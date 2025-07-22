@@ -14,7 +14,7 @@ export class RequestsService {
 
       sendRequest(request: UserRequestType) : Observable<DefaultResponseType>
       {
-        console.log(request);
+        //console.log(request);
         return this.http.post<DefaultResponseType>(environment.api+'requests', request);
       }
   

@@ -9,3 +9,8 @@ export type CommentType = {
         name: string
       }
 }
+
+export type MoreCommentType = {
+      allCount: number,
+      comments: CommentType[],
+}
