@@ -15,13 +15,14 @@ import { ReviewType } from '../../../assets/types/review.type';
 export class MainComponent implements OnInit {
 
   banners: BannerInfoType[] = [
-    {   descriptionSpan1 : '',
+    { descriptionSpan1 : '',
       descriptionText1: 'Продвижение в Instagram для вашего бизнеса ',
       descriptionSpan2: '-15%',
       descriptionText2: '!',
       title: 'Предложение месяца',
       descriptionAddedInfo: '',
-      id: 1
+      id: 1,
+      service: 'Продвижение'
     },
   {  descriptionSpan1 : '',
       descriptionText1: 'Нужен грамотный ',
@@ -29,7 +30,9 @@ export class MainComponent implements OnInit {
       descriptionText2: '?',
       descriptionAddedInfo: 'Весь декабрь у нас действует акция на работу копирайтера.',
       title: 'Акция',
-      id: 2
+      id: 2,
+      service: 'Копирайтинг'
+
     },
   {  descriptionSpan1 : '6 место',
       descriptionText1: 'в ТОП-10 SMM-агенств Москвы!',
@@ -37,7 +40,9 @@ export class MainComponent implements OnInit {
       descriptionText2: '',
       descriptionAddedInfo: 'Мы благодарим каждого, кто голосовал за нас!',
       title: 'Новость дня',
-      id: 3
+      id: 3,
+      service: 'Реклама'
+
     }
   ];
   services: ServiceType[] = [

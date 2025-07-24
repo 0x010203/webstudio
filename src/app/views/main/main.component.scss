@@ -12,9 +12,9 @@
             .carousel-arrow-prev,
             .carousel-arrow-next {
                 position: absolute;
-                top: 50%;
-
+                top: calc(50% - 14px);
                 z-index: 2;
+                cursor: pointer;
             }
 
             .carousel-arrow-prev {

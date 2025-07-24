@@ -130,7 +130,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{comment.text}}
+                                <div class="article-body-info-comments-item-text">{{comment.text}}</div>
                                 <div class="article-body-info-comments-item-actions">
                                     <div class="article-body-info-comments-item-actions-item like" [class.myaction]="likedComments.includes(comment.id)" 
                                     (click)="likeComment(comment.id)">

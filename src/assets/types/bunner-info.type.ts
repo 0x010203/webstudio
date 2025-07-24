@@ -6,4 +6,5 @@ export type BannerInfoType = {
     descriptionText2: string,
     descriptionAddedInfo: string,
     id: number,
+    service: string,
 }

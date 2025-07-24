@@ -17,39 +17,34 @@ export class CommentsService {
     offset: number = 0
   ): Observable<CommentsResponseType | DefaultResponseType> {
     return this.http.get<CommentsResponseType | DefaultResponseType>(
-      environment.api + 'comments',
-      { params: { offset, article } }
+      environment.api + 'comments', { params: { offset, article } }
     );
   }
   addComment(article: string, text: string): Observable<DefaultResponseType> {
     return this.http.post<DefaultResponseType>(
-      environment.api + 'comments',
-      {
+      environment.api + 'comments', {
         text: text,
         article: article,
-      },
-      { withCredentials: true}
+      }
     );
   }
 
   addActionToComment(idComment: string, action: CommentActionEnumType): Observable<DefaultResponseType>{
     return this.http.post<DefaultResponseType>(
-      environment.api + 'comments/'+idComment+'/apply-action',
-      {
+      environment.api + 'comments/'+idComment+'/apply-action', {
         action: action
-      },
-      { withCredentials: true}
+      }
     );
   }
 
   getActionToComment(idComment: string): Observable<DefaultResponseType | CommentActionType[]>{
     return this.http.get<DefaultResponseType>(
-      environment.api + 'comments/'+idComment+'/actions',  { withCredentials: true}
+      environment.api + 'comments/'+idComment+'/actions'
     );
   }
   getArticleCommentActions(articleId: string): Observable<DefaultResponseType | CommentActionType[]>{
     return this.http.get<DefaultResponseType>(
-      environment.api + 'comments/article-comment-actions', { params:{articleId: articleId},  withCredentials: true}
+      environment.api + 'comments/article-comment-actions', { params:{articleId: articleId}}
     );
   }
 

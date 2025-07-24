@@ -271,6 +271,16 @@
 
                                 }
 
+                                .article-body-info-comments-item-text {
+                                    font-family: 'Montserrat',sans-serif;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    font-size: 14px;
+                                    line-height: 140%;
+                                    color: $text-color;
+                                    margin-bottom: 39px;
+                                }
+
                                 .article-body-info-comments-item-actions {
                                     display: flex;
                                     gap: 15px;
@@ -296,12 +306,11 @@
                                             cursor: pointer;
                                         }
 
-                                        &.myaction > svg{
+                                        &.myaction>svg {
                                             stroke: $dark-element-color;
                                         }
-                                        
-                                        &.myaction > span
-                                        {
+
+                                        &.myaction>span {
                                             color: $dark-element-color;
                                         }
 
@@ -309,23 +318,25 @@
                                 }
                             }
 
-                            
+
                         }
+
                         .article-body-info-comments-getmore {
-                                margin-top: 60px;
-                                font-family: 'Montserrat', sans-serif;
-                                font-style: normal;
-                                font-weight: 500;
-                                font-size: 20px;
-                                line-height: 130%;
-                                color: $dark-element-color;
-                                display: inline-flex;
-                                align-items: center;
-                                cursor: pointer;
-                                svg{
-                                    margin-left: 10px;
-                                }
+                            margin-top: 60px;
+                            font-family: 'Montserrat', sans-serif;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 20px;
+                            line-height: 130%;
+                            color: $dark-element-color;
+                            display: inline-flex;
+                            align-items: center;
+                            cursor: pointer;
+
+                            svg {
+                                margin-left: 10px;
                             }
+                        }
                     }
                 }
 
