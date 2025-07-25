@@ -3,6 +3,7 @@
 @import "../../../../assets/styles/fonts";
 
 .article {
+    @include flex-grow-1;
     .container {
         .article-breadcrumbs {
             margin-top: 80px;

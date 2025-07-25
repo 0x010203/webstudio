@@ -1,6 +1,9 @@
 @import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/fonts";
 
 .privacy {
+    @include flex-grow-1;
     .container {
         font-family: 'Montserrat', sans-serif;
         font-style: normal;

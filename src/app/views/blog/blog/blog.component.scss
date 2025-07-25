@@ -3,6 +3,7 @@
 @import "../../../../assets/styles/fonts";
 
 .blog {
+    @include flex-grow-1;
     .container {
         .blog-title {
             font-family: 'Lora', sans-serif;
