@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ArticleService } from '../../../shared/services/article.service';
 import { ArticleType } from '../../../../assets/types/article.type';
 import { ActivatedRoute } from '@angular/router';
@@ -35,6 +35,7 @@ export class ArticleComponent implements OnInit {
   protected dislikedComments: string[] = [];
   private visibleCommentsCount: number = 0;
   //protected likedComments: string[] =[];
+  @Input() textComment: string = '';
 
   constructor(
     private articleService: ArticleService,
@@ -122,6 +123,7 @@ export class ArticleComponent implements OnInit {
             }
           });
         (textAreaElem as HTMLInputElement).value = '';
+        this.textComment = '';
         this._snackBar.open('Ваш комментарий опубликован');
         this.getComments();
       }

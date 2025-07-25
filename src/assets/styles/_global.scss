@@ -48,6 +48,11 @@ body {
     border: 0;
     background: #709FDC;
     color: $fill-btn-text-color;
+
+    &.disabled {
+        background-color: $button-disabled-background;
+        cursor: auto;
+    }
 }
 
 .window-title {
@@ -60,22 +65,24 @@ body {
     color: $title-text-color;
 }
 
-.input{
+.input {
     border-radius: 3px;
     font-family: 'Montserrat', sans-serif;
     border: 2px solid $dark-element-color;
     padding: 17px 20px;
     color: $placeholder-text-color;
-    &:focus{
+
+    &:focus {
         color: $text-color;
         outline: none;
         border: 2px solid $dark-element-color;
     }
 }
 
-.owl-carousel{
+.owl-carousel {
     position: relative;
-    .owl-dots{
+
+    .owl-dots {
         position: absolute;
         bottom: 3%;
         left: 47%;

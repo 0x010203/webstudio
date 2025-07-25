@@ -90,10 +90,10 @@
                         <div class="article-body-info-comments-input" *ngIf="isLogged">
                             <div class="article-body-info-comments-input-text">
                                 <textarea name="comment-input" id="comment-input" rows="10"
-                                    placeholder="Напишите Ваш комментарий к статье..."></textarea>
+                                    placeholder="Напишите Ваш комментарий к статье..." [(ngModel)]="textComment"></textarea>
                             </div>
                             <div class="article-body-info-comments-input-button">
-                                <button class="button" (click)="addComment()">Опубликовать комментарий</button>
+                                <button class="button" (click)="addComment()" [disabled]="textComment.length===0" [class.disabled]="textComment.length===0">Опубликовать комментарий</button>
                             </div>
                         </div>
                         <div class="article-body-info-comments-items">

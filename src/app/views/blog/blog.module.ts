@@ -3,7 +3,7 @@ import { CommonModule, NgClass } from '@angular/common';
 
 import { BlogRoutingModule } from './blog-routing.module';
 import { SharedModule } from '../../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogComponent } from './blog/blog.component';
 import { ArticleComponent } from './article/article.component';
 
@@ -19,7 +19,7 @@ import { ArticleComponent } from './article/article.component';
     SharedModule,
     ReactiveFormsModule,
     NgClass,
-
+    FormsModule
   ]
 })
 export class BlogModule { }
